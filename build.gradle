@@ -1,0 +1,51 @@
+plugins {
+    id 'java-library'
+    id "io.qameta.allure" version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+allure {
+    report {
+        version.set("2.21.0")
+    }
+
+    allure {
+        report {
+            version.set("2.21.0")
+        }
+        adapter {
+            aspectjWeaver.set(true)
+            frameworks {
+                junit5 {
+                    adapterVersion.set("2.21.0")
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:7.3.3",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            'org.slf4j:slf4j-simple:2.0.13',
+            'com.github.javafaker:javafaker:1.0.2',
+            'io.qameta.allure:allure-junit5:2.19.1',
+            'org.aspectj:aspectjweaver:1.9.20',
+            'io.qameta.allure:allure-selenide:2.28.1',
+            'com.opera:operadriver:1.5',
+            'org.seleniumhq.selenium:selenium-java:3.141.59',
+            'org.aeonbits.owner:owner:1.0.4',
+            'org.assertj:assertj-core:3.23.1',
+            'io.github.bonigarcia:webdrivermanager:5.2.1',
+
+    )
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
