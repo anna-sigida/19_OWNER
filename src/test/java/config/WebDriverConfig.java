@@ -3,8 +3,6 @@ package config;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
-import java.net.URL;
-
 @Sources({
         "classpath:${env}.properties",
         "file:./${env}.properties"
@@ -12,13 +10,9 @@ import java.net.URL;
 
 public interface WebDriverConfig extends Config {
 
-    @Key("baseUrl")
-    @DefaultValue("https://github.com")
-    String getBaseUrl();
-
     @Key("browser")
     @DefaultValue("CHROME")
-    String getBrowser();
+    Browsers getBrowser();
 
     @Key("browserVersion")
     String browserVersion();
@@ -28,5 +22,5 @@ public interface WebDriverConfig extends Config {
     boolean isRemote();
 
     @Key("remoteUrl")
-    URL remoteUrl();
+    String remoteUrl();
 }

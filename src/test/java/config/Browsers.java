@@ -1,6 +1,6 @@
 package config;
 
-public enum Browser {
+public enum Browsers {
     FIREFOX,
     CHROME
 }
